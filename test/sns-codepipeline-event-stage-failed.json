@@ -3,7 +3,7 @@
     {
       "EventSource": "aws:sns",
       "EventVersion": "1.0",
-      "EventSubscriptionArn": "arn:aws:sns:us-east-1:123456789123:CodePipelineNotifications:00000000-0000-0000-0000-000000000000",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-1:123456789123:code-pipeline-notifications:00000000-0000-0000-0000-000000000000",
       "Sns": {
         "Type": "Notification",
         "MessageId": "00000000-0000-0000-0000-000000000000",
