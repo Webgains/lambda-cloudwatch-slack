@@ -13,6 +13,10 @@ module.exports = {
       // text in the sns message or topicname to match on to process this service type
       match_text: "code-pipeline-notifications"
     },
+    codebuild: {
+      // text in the sns message or topicname to match on to process this service type
+      match_text: "code-build-notifications"
+    },
     codedeploy: {
       // text in the sns message or topicname to match on to process this service type
       match_text: "CodeDeploy"

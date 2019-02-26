@@ -1,0 +1,18 @@
+{
+    "Records": [
+        {
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:eu-west-1:123456789123:code-build-notifications:test",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "test",
+                "TopicArn": "arn:aws:sns:eu-west-1:123456789123:code-build-notifications",
+                "Subject": null,
+                "Message": "{\"version\":\"0\",\"id\":\"test\",\"detail-type\":\"CodeBuild Build State Change\",\"source\":\"aws.codebuild\",\"account\":\"123456789123\",\"time\":\"2019-02-26T12:25:57Z\",\"region\":\"eu-west-1\",\"resources\":[\"arn:aws:codebuild:eu-west-1:123456789123:build/a-code-project:test\"],\"detail\":{\"build-status\":\"IN_PROGRESS\",\"project-name\":\"a-code-project\",\"build-id\":\"arn:aws:codebuild:eu-west-1:123456789123:build/a-code-project:test\",\"additional-information\":{\"cache\":{\"type\":\"NO_CACHE\"},\"timeout-in-minutes\":60.0,\"build-complete\":false,\"initiator\":\"test@example.com\",\"build-start-time\":\"Feb 26, 2019 12:25:57 PM\",\"source\":{\"location\":\"https://github.com/Webgains/a-code-project.git\",\"type\":\"GITHUB\"},\"source-version\":\"ci_updates\",\"artifact\":{\"location\":\"\"},\"environment\":{\"image\":\"aws/codebuild/nodejs:10.14.1\",\"privileged-mode\":true,\"compute-type\":\"BUILD_GENERAL1_SMALL\",\"type\":\"LINUX_CONTAINER\",\"environment-variables\":[{\"name\":\"CONTAINER_NAME\",\"type\":\"PLAINTEXT\",\"value\":\"mvc-template\"},{\"name\":\"REPOSITORY_URI\",\"type\":\"PLAINTEXT\",\"value\":\"123456789123.dkr.ecr.eu-west-1.amazonaws.com/webgains/mvc-template\"}]},\"logs\":{\"deep-link\":\"https://console.aws.amazon.com/cloudwatch/home?region=eu-west-1#logEvent:group=null;stream=null\"},\"phases\":[{\"phase-context\":[],\"start-time\":\"Feb 26, 2019 12:25:57 PM\",\"end-time\":\"Feb 26, 2019 12:25:57 PM\",\"duration-in-seconds\":0.0,\"phase-type\":\"SUBMITTED\",\"phase-status\":\"SUCCEEDED\"},{\"start-time\":\"Feb 26, 2019 12:25:57 PM\",\"phase-type\":\"QUEUED\"}],\"queued-timeout-in-minutes\":480.0},\"current-phase\":\"QUEUED\",\"current-phase-context\":\"[]\",\"version\":\"1\"}}",
+                "Timestamp": "2019-02-26T12:26:03.995Z",
+                "MessageAttributes": {}
+            }
+        }
+    ]
+}
