@@ -150,6 +150,11 @@ var handleCodeBuild = function(event, context) {
     var buildId = message.detail["build-id"];
     var status = message.detail["build-status"];
 
+    var gitLink = /\.git$/;
+    var sourceLink = message.detail["additional-information"].source.location.replace(gitLink, "");
+    sourceLink += "/tree/";
+    sourceLink += message.detail["additional-information"]["source-version"] || "master";
+
     if(status === "SUCCEEDED"){
       color = "good";
     } else if(status === "FAILED"){
@@ -164,7 +169,7 @@ var handleCodeBuild = function(event, context) {
     fields.push({ "title": "Start Time", "value":  message.detail["additional-information"]["build-start-time"], "short": true });
     fields.push({
       "title": "Source",
-      "value": message.detail["additional-information"].source.location + "/tree/" + message.detail["additional-information"]["source-version"],
+      "value": sourceLink,
       "short": false
     });
     fields.push({
