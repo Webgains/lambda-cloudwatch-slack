@@ -149,12 +149,9 @@ var handleCodeBuild = function(event, context) {
     
     var buildId = message.detail["build-id"];
     var status = message.detail["build-status"];
-
-    var gitLink = /\.git$/;
-    var sourceLink = message.detail["additional-information"].source.location.replace(gitLink, "");
-    sourceLink += "/tree/";
-    sourceLink += message.detail["additional-information"]["source-version"] || "master";
-
+    
+    var additionalInfo = message.detail["additional-information"];
+      
     if(status === "SUCCEEDED"){
       color = "good";
     } else if(status === "FAILED"){
@@ -165,13 +162,23 @@ var handleCodeBuild = function(event, context) {
     }
     fields.push({ "title": "Project", "value": message.detail["project-name"], "short": true });
     fields.push({ "title": "Status", "value": status, "short": true });
-    fields.push({ "title": "Initiator", "value":  message.detail["additional-information"].initiator, "short": true });
-    fields.push({ "title": "Start Time", "value":  message.detail["additional-information"]["build-start-time"], "short": true });
-    fields.push({
-      "title": "Source",
-      "value": sourceLink,
-      "short": false
-    });
+    fields.push({ "title": "Initiator", "value":  additionalInfo.initiator, "short": true });
+    fields.push({ "title": "Start Time", "value":  additionalInfo["build-start-time"], "short": true });
+
+    if("GITHUB" == additionalInfo.source.type)
+    {
+      var gitLink = /\.git$/;
+      var sourceLink = additionalInfo.source.location.replace(gitLink, "");
+      sourceLink += "/tree/";
+      sourceLink += additionalInfo["source-version"] || "master";
+
+      fields.push({
+        "title": "Source",
+        "value": sourceLink,
+        "short": false
+      });
+    }
+
     fields.push({
       "title": "Logs",
       "value": "https://eu-west-1.console.aws.amazon.com/codesuite/codebuild/projects/" +
@@ -182,7 +189,7 @@ var handleCodeBuild = function(event, context) {
     });
     //fields.push({
     //  "title": "Logs",
-    //  "value": message.detail["additional-information"].logs["deep-link"],
+    //  "value": additionalInfo.logs["deep-link"],
     //  "short": false
     //});
   }
